@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Quiz de Conflictos</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 15px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ddd;
+}
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>🎮 Quiz de Conflictos</h2>
+  <p id="question"></p>
+
+  <button onclick="checkAnswer('intrapersonal')">Intrapersonal</button>
+  <button onclick="checkAnswer('interpersonal')">Interpersonal</button>
+  <button onclick="checkAnswer('intragrupal')">Intragrupal</button>
+  <button onclick="checkAnswer('intergrupal')">Intergrupal</button>
+
+  <p id="result"></p>
+  <button onclick="nextQuestion()">Siguiente</button>
+</div>
+
+<script>
+const questions = [
+  { text: "Una persona no sabe si cambiar de carrera.", answer: "intrapersonal" },
+  { text: "Dos amigos discuten por un malentendido.", answer: "interpersonal" },
+  { text: "Un equipo tiene conflictos internos.", answer: "intragrupal" },
+  { text: "Dos equipos se culpan mutuamente.", answer: "intergrupal" },
+  { text: "Alguien siente culpa por una decisión.", answer: "intrapersonal" }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+  document.getElementById("question").innerText = questions[current].text;
+  document.getElementById("result").innerText = "";
+}
+
+function checkAnswer(answer) {
+  if (answer === questions[current].answer) {
+    document.getElementById("result").innerText = "Correcto ✅";
+    score++;
+  } else {
+    document.getElementById("result").innerText = "Incorrecto ❌";
+  }
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    loadQuestion();
+  } else {
+    document.querySelector(".container").innerHTML =
+      "<h2>Resultado</h2><p>Obtuviste " + score + " de " + questions.length + "</p>";
+  }
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
