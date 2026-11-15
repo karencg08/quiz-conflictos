@@ -118,7 +118,7 @@ section {
     text-align: center;
     padding: 4rem 1.5rem;
     /* CORRECCIÓN: Se eliminó la barra diagonal inicial '/' */
-    background-image: url('img/carrouselTres.jpg');
+    background-image: url('/img/carrouselTres.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
